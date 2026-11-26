@@ -1,13 +1,26 @@
-export function TodoList() {
-  console.log("TODO LIST CALLED");
+import type {Todo} from "./todo.ts";
+
+type TodoProps = {
+  todos: Todo[],
+}
+
+export function TodoList({ todos }: TodoProps) {
+  console.log("TODO LIST CALLED", todos);
+
+  if (todos.length === 0) {
+    return (
+      <section>
+        <h2>Todo List</h2>
+        <p>No Todos available</p>
+      </section>
+    )
+  }
 
   return (
     <section>
       <h2>Todo List</h2>
       <ul>
-        <li>Learn Java</li>
-        <li>Learn React</li>
-        <li>Learn Kotlin</li>
+        {todos.map(todo => <li key={todo.id}>{todo.text} - {todo.priority}</li>)}
       </ul>
     </section>
   );

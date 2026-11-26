@@ -12,6 +12,9 @@ const initialTodos: Todo[] = [
 export function App() {
   console.log("APP CALLED");
 
+  // STATE: data that changes over time and that the UI depends on.
+  //  App owns the todos, because both children need them.
+  //  -> Its called "LIFTING STATE UP"
   const [todos, setTodos] = useState<Todo[]>(initialTodos);
 
   function handleAdd(text: string) {
@@ -20,6 +23,8 @@ export function App() {
       text: text,
       priority: "normal"
     };
+    // STATE: never change, always replace (new array -> new reference).
+    //   setTodos triggers RENDER PHASE, React calls App and all its children again.
     setTodos([...todos, newTodo]);
   }
 
@@ -27,7 +32,11 @@ export function App() {
     <>
       <h1>Todo App</h1>
       <main>
+
+        {/* PROPS: data goes down */}
         <TodoList todos={todos}/>
+
+        {/* PROPS: events go up (callback) */}
         <TodoInput onAdd={handleAdd}/>
       </main>
     </>

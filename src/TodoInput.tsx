@@ -1,15 +1,25 @@
+import {useState} from "react";
+
 export function TodoInput() {
   console.log("TODO INPUT CALLED");
+
+  const [text, setText] = useState("");
+
+  function handleSubmit(event: React.SubmitEvent<HTMLFormElement>) {
+    event.preventDefault();
+    console.log(text);
+    setText("");
+  }
 
   return (
     <section>
       <h2>Todo Input</h2>
 
-      <form>
+      <form onSubmit={handleSubmit}>
 
         {/* TEXT */}
         <label htmlFor="todo">Todo</label>
-        <input id="todo" type="text"/>
+        <input id="todo" type="text" value={text} onChange={(e) => setText(e.target.value)}/>
 
         {/* PRIO */}
         <label htmlFor="priority">Priority</label>

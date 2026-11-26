@@ -14,10 +14,10 @@ export function App() {
 
   const [todos, setTodos] = useState<Todo[]>(initialTodos);
 
-  function handleAdd() {
+  function handleAdd(text: string) {
     const newTodo: Todo = {
       id: todos.length + 1,
-      text: "Learn React",
+      text: text,
       priority: "normal"
     };
     setTodos([...todos, newTodo]);
@@ -28,10 +28,8 @@ export function App() {
       <h1>Todo App</h1>
       <main>
         <TodoList todos={todos}/>
-        <TodoInput/>
+        <TodoInput onAdd={handleAdd}/>
       </main>
-
-      <button onClick={handleAdd}>Add Todo</button>
     </>
   )
 

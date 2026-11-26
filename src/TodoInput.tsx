@@ -1,13 +1,17 @@
 import {useState} from "react";
 
-export function TodoInput() {
+type TodoInputProps = {
+  onAdd: (text: string) => void
+}
+
+export function TodoInput({ onAdd }: TodoInputProps) {
   console.log("TODO INPUT CALLED");
 
   const [text, setText] = useState("");
 
   function handleSubmit(event: React.SubmitEvent<HTMLFormElement>) {
     event.preventDefault();
-    console.log(text);
+    onAdd(text);
     setText("");
   }
 

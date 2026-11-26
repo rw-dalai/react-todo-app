@@ -138,3 +138,17 @@ App            owns the state: the list of todos
 | `src/App.tsx` | parent component, holds `useState` |
 | `src/TodoInput.tsx` | child component for the input |
 | `src/TodoList.tsx` | child component for the output |
+
+## 9. Diagrams
+
+### From the mockup to the pixels
+
+![From the mockup to the pixels](docs/react-1.png)
+
+### Thinking in React
+
+![Thinking in React](docs/react-2.png)
+
+### Data goes down, events go up
+
+<img src="docs/react-3.png" alt="Data goes down, events go up" width="50%">

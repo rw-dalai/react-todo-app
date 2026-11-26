@@ -1,6 +1,6 @@
 import {TodoList} from "./TodoList.tsx";
 import {TodoInput} from "./TodoInput.tsx";
-import type {Todo} from "./todo.ts";
+import type {Todo, TodoFormData} from "./todo.ts";
 import {useState} from "react";
 
 const initialTodos: Todo[] = [
@@ -17,11 +17,11 @@ export function App() {
   //  -> Its called "LIFTING STATE UP"
   const [todos, setTodos] = useState<Todo[]>(initialTodos);
 
-  function handleAdd(text: string) {
+  function handleAdd(todo: TodoFormData) {
     const newTodo: Todo = {
       id: todos.length + 1,
-      text: text,
-      priority: "normal"
+      text: todo.text,
+      priority: todo.priority
     };
     // STATE: never change, always replace (new array -> new reference).
     //   setTodos triggers RENDER PHASE, React calls App and all its children again.

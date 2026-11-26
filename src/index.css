@@ -21,3 +21,7 @@ form {
     max-width: 360px;
     gap: 8px;
 }
+
+form p {
+    color: red;
+}
